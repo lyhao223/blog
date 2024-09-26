@@ -1,1 +1,59 @@
-<p>form-create-post works!</p>
+<form>
+  <div class="flex flex-col items-start justify-center space-y-3">
+    <label for="title" class="text-2xl font-medium">Title:</label>
+    <input
+      id="title"
+      type="text"
+      name="title"
+      class="w-full h-auto border-2 rounded-lg p-3"
+    />
+    <label for="userID" class="text-2xl font-medium">UserID:</label>
+    <select
+      id="userID"
+      type="number"
+      name="userID"
+      class="w-28 h-auto border-2 rounded-lg p-3"
+    >
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <label for="body" class="text-2xl font-medium">Body:</label>
+    <textarea
+      id="body"
+      name="body"
+      class="w-full h-48 border-2 rounded-lg p-3"
+      rows="10"
+      cols="10"
+    ></textarea>
+    <label for="image" class="text-2xl font-medium">Choose your image:</label>
+    <input
+      id="image"
+      type="file"
+      name="image"
+      accept="image/x-png,image/gif,image/jpeg,image/jpg"
+      class="w-full h-auto border-2 rounded-lg p-3"
+    />
+  </div>
+  <div class="flex flex-row justify-between my-12">
+    <button
+      type="submit"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Save
+    </button>
+    <button
+      type="button"
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

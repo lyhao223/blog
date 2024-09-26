@@ -1,1 +1,19 @@
-<p>comments works!</p>
+<h1 class="text-3xl font-semibold">Comments:</h1>
+<div
+  *ngIf="filteredComments.length > 0"
+  class="flex flex-col items-start justify-start space-y-3"
+>
+  <div
+    *ngFor="let comment of filteredComments"
+    class="w-80 h-auto p-3 rounded-lg bg-slate-300"
+  >
+    @defer {
+
+    <h3>Name: {{ comment.name }}</h3>
+    <p>Email: {{ comment.email }}</p>
+    <p>Content: {{ comment.body }}</p>
+    }@loading(minimum 3.5s) {
+    <h1>Loading comments...</h1>
+    }
+  </div>
+</div>

@@ -1,1 +1,26 @@
-<p>blog-list works!</p>
+<ng-container *ngFor="let item of listBlog">
+  <a
+    [routerLink]="['/blog-list/post', item.id]"
+    routerLinkActive="active"
+    class="flex flex-row items-start justify-start"
+  >
+    <ng-container *ngFor="let img of listImage">
+      <ng-container *ngIf="item.id === img.id">
+        @defer {
+        <img [src]="img.thumbnailUrl" alt="{{ img.title }}" />
+        } @loading (minimum 3s){
+        <p>Loading image...</p>
+        }
+      </ng-container>
+    </ng-container>
+    <div class="flex flex-col items-start justify-center">
+      @defer {
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.body }}</p>
+      } @loading (minimum 3s){
+      <p>Loading title...</p>
+      <p>Loading content...</p>
+      }
+    </div>
+  </a>
+</ng-container>

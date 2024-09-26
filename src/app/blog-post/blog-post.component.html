@@ -1,1 +1,26 @@
-<p>blog-post works!</p>
+@defer {
+<div class="flex flex-col items-start justify-center">
+  <div class="flex flex-col items-start justify-center">
+    <h1>ID: {{ data.id }}</h1>
+    <ng-container *ngFor="let img of imageList">
+      <ng-container *ngIf="data.id === img.id">
+        <img
+          class="w-full h-64 object-cover"
+          [src]="img.url"
+          [alt]="img.title"
+        />
+      </ng-container>
+    </ng-container>
+    <h1 class="text-2xl font-bold">{{ data.title }}</h1>
+    <p class="text-lg">{{ data.body }}</p>
+    <app-comments [postId]="data.id"></app-comments>
+    <button
+      class="text-lg mt-10 p-2 rounded-lg bg-blue-500 hover:bg-blue-700 text-white"
+    >
+      Edit
+    </button>
+  </div>
+</div>
+} @loading(minimum 2s) {
+<p class="flex items-center justify-center">Loading...</p>
+}

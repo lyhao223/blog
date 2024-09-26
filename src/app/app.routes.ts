@@ -1,14 +1,22 @@
 import { Routes } from '@angular/router';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { FormCreatePostComponent } from './form-create-post/form-create-post.component';
-import { AlbumComponent } from './album/album.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
 
 export const routes: Routes = [
-  { path: 'blog-list', title: 'Blog list', component: BlogListComponent },
+  {
+    path: 'blog-list',
+    title: 'Blog list',
+    component: BlogListComponent,
+  },
   {
     path: 'create-the-blog',
     title: 'Create the blog',
     component: FormCreatePostComponent,
   },
-  { path: 'album', title: 'Album', component: AlbumComponent },
+  {
+    path: 'blog-list/post/:id',
+    title: 'Blog detail',
+    component: BlogPostComponent,
+  },
 ];

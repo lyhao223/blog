@@ -1,5 +1,5 @@
 @defer {
-<div class="flex flex-col items-start justify-center">
+<div class="flex flex-col items-start justify-center mx-5">
   <div class="flex flex-col items-start justify-center">
     <h1>ID: {{ data.id }}</h1>
     <ng-container *ngFor="let img of imageList">
@@ -14,13 +14,32 @@
     <h1 class="text-2xl font-bold">{{ data.title }}</h1>
     <p class="text-lg">{{ data.body }}</p>
     <app-comments [postId]="data.id"></app-comments>
-    <button
-      class="text-lg mt-10 p-2 rounded-lg bg-blue-500 hover:bg-blue-700 text-white"
-    >
-      Edit
-    </button>
   </div>
 </div>
+<div class="flex flex-row justify-between">
+  <button
+    class="text-lg mt-10 p-2 rounded-lg bg-blue-500 hover:bg-blue-700 text-white"
+    (click)="openModal()"
+  >
+    Edit
+  </button>
+  <button
+    class="text-lg mt-10 p-2 rounded-lg bg-red-500 hover:bg-red-700 text-white"
+    (click)="deletePost()"
+  >
+    Delete
+  </button>
+</div>
+<ng-container *ngIf="isDelete">
+  <p>Delete is done</p>
+</ng-container>
+<ng-container *ngIf="isOpenModal">
+  <app-form-blog-edit
+    [data]="data"
+    (closeModal)="closeModal()"
+    (saveChanges)="saveChangesData($event)"
+  ></app-form-blog-edit>
+</ng-container>
 } @loading(minimum 2s) {
 <p class="flex items-center justify-center">Loading...</p>
 }

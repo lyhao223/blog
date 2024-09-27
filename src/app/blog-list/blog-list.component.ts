@@ -14,10 +14,10 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 export class BlogListComponent implements OnInit {
   public listBlog: any = [];
   public listImage: any = [];
-  public date = new Date();
-  public displayItems = [];
-  public itemsToShow = 10;
-  public currentIndex = 0;
+  public paginatedBlogs: any[] = [];
+  public currentPage = 1;
+  public itemsPerPage = 10;
+  public totalPages = 0;
   constructor(
     private blogList: BlogListService,
     private imageList: BlogListService
@@ -26,11 +26,40 @@ export class BlogListComponent implements OnInit {
     this.blogList.getBlogList().subscribe((data) => {
       console.log(data);
       this.listBlog = data;
+      this.totalPages = Math.ceil(this.listBlog.length / this.itemsPerPage);
+      this.paginatedBlog();
     });
 
     this.imageList.getImageList().subscribe((data) => {
       console.log(data);
       this.listImage = data;
     });
+  }
+
+  paginatedBlog(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = this.currentPage * this.itemsPerPage;
+    this.paginatedBlogs = this.listBlog.slice(startIndex, endIndex);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.paginatedBlog();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.paginatedBlog();
+    }
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.paginatedBlog();
+    }
   }
 }

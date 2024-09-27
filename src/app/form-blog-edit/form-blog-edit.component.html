@@ -1,0 +1,52 @@
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+>
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-bold mb-4">Edit Post</h2>
+    <form [formGroup]="form" (ngSubmit)="onSaveChanges()">
+      <label class="block text-lg font-medium mb-2">Title:</label>
+      <input
+        type="text"
+        formControlName="title"
+        class="border border-gray-300 p-2 rounded w-full mb-4"
+      />
+      <div
+        *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+        class="text-red-500"
+      >
+        Title is required
+      </div>
+
+      <label class="block text-lg font-medium mb-2">Body:</label>
+      <textarea
+        formControlName="body"
+        rows="5"
+        class="border border-gray-300 p-2 rounded w-full"
+      ></textarea>
+      <div
+        *ngIf="form.get('body')?.invalid && form.get('body')?.touched"
+        class="text-red-500"
+      >
+        Body is required
+      </div>
+
+      <div class="flex justify-end mt-4">
+        <button
+          type="button"
+          (click)="onCancel()"
+          class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          (click)="onSaveChanges()"
+          [disabled]="form.invalid"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

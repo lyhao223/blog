@@ -1,4 +1,4 @@
-<ng-container *ngFor="let item of listBlog">
+<ng-container *ngFor="let item of paginatedBlogs">
   <a
     [routerLink]="['/blog-list/post', item.id]"
     routerLinkActive="active"
@@ -24,3 +24,16 @@
     </div>
   </a>
 </ng-container>
+@defer {
+<div class="flex items-center justify-center">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+    Next
+  </button>
+</div>
+}@loading(minimum 4s) {
+<div class="flex items-center justify-center">
+  <p>Loading...</p>
+</div>
+}

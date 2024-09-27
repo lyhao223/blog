@@ -12,4 +12,8 @@ export class BlogPostService {
   public getPostWithID(id: number) {
     return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
   }
+
+  public deletePostWithID(id: number) {
+    return this.http.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  }
 }

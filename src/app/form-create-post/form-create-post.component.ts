@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { FormCreatePostService } from './form-create-post.service';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-form-create-post',
   standalone: true,
@@ -20,7 +21,11 @@ export class FormCreatePostComponent implements OnInit {
   form: FormGroup | any;
   isDone: boolean = false;
   content: any = '';
-  constructor(private f: FormBuilder, private post: FormCreatePostService) {}
+  constructor(
+    private f: FormBuilder,
+    private post: FormCreatePostService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {
     this.form = this.f.group({
@@ -38,5 +43,8 @@ export class FormCreatePostComponent implements OnInit {
       console.log(this.dataPost);
       this.isDone = true;
     });
+  }
+  oncancel() {
+    this.route.navigate(['/blog-list']);
   }
 }

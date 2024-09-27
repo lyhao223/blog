@@ -26,9 +26,31 @@
 </ng-container>
 @defer {
 <div class="flex items-center justify-center">
-  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <button
+    (click)="prevPage()"
+    [disabled]="currentPage === 1"
+    [ngClass]="{    
+      'bg-slate-500': currentPage === 1,
+      'hover:bg-slate-700': currentPage === 1,
+      'bg-blue-500': currentPage !== 1,
+      'hover:bg-blue-700': currentPage !== 1,
+    }"
+    class="p-2 rounded-lg cursor-pointer text-white"
+  >
+    Previous
+  </button>
   <span>Page {{ currentPage }} of {{ totalPages }}</span>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages"
+    [ngClass]="{    
+      'bg-slate-500': currentPage === totalPages,
+      'hover:bg-slate-700': currentPage === totalPages,
+      'bg-blue-500': currentPage !== totalPages,
+      'hover:bg-blue-700': currentPage !== totalPages,
+    }"
+    class="p-2 rounded-lg cursor-pointer text-white"
+  >
     Next
   </button>
 </div>

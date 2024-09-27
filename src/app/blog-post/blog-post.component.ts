@@ -50,6 +50,7 @@ export class BlogPostComponent implements OnInit {
 
   deletePost() {
     return this.service.deletePostWithID(this.getId).subscribe((data) => {
+      console.log(data);
       alert('Post Deleted Successfully');
     });
   }

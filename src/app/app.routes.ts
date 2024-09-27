@@ -2,8 +2,14 @@ import { Routes } from '@angular/router';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { FormCreatePostComponent } from './form-create-post/form-create-post.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    title: 'Welcome',
+    component: WelcomeComponent,
+  },
   {
     path: 'blog-list',
     title: 'Blog list',
